@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_panenkuy/navigation/bottomnav.dart';
 import 'package:flutter_panenkuy/ui/map_screen.dart';
 import 'package:flutter_panenkuy/ui/menumaps.dart';
 import 'package:flutter_panenkuy/ui/register.dart';
@@ -169,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MenuPeta()),
+                      MaterialPageRoute(builder: (context) => BottomNav()),
                     );
                   },
                   child: Text(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_panenkuy/navigation/bottomnav.dart';
+import 'package:flutter_panenkuy/ui/dashboard.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Register extends StatefulWidget {
@@ -234,7 +236,12 @@ class _RegisterState extends State<Register> {
                           color: Colors.white,
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.w700)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BottomNav()),
+                    );
+                  },
                   child: Text(
                     'DAFTAR',
                   ),
