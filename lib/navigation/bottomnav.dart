@@ -111,7 +111,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ],
         // HexColor("#3B4254")
         color: Colors.white,
-        buttonBackgroundColor: HexColor("#2DDA93"),
+        buttonBackgroundColor: HexColor("#ffffff"),
         backgroundColor: HexColor("#D2D2D2"),
         animationCurve: Curves.easeInCubic,
         animationDuration: Duration(milliseconds: 600),
