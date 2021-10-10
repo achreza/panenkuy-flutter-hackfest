@@ -87,7 +87,7 @@ class _DashboardMenuState extends State<DashboardMenu> {
               ],
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(5, 3, 5, 5),
+              margin: EdgeInsets.fromLTRB(5, 2.5, 5, 5),
               width: MediaQuery.of(context).size.width,
               child: Postingan(),
             )
