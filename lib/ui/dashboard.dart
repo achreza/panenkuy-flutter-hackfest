@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_panenkuy/ui/postingan.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class DashboardMenu extends StatefulWidget {
@@ -85,30 +86,10 @@ class _DashboardMenuState extends State<DashboardMenu> {
                 )
               ],
             ),
-            //lek atek list view gagelem metu
-            ListView(
-              padding: const EdgeInsets.all(18),
-              children: [
-                Container(
-                  color: Colors.white,
-                  width: MediaQuery.of(context).size.width,
-                  height: 290,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.amber,
-                            radius: 90,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
+            Container(
+              margin: EdgeInsets.fromLTRB(5, 3, 5, 5),
+              width: MediaQuery.of(context).size.width,
+              child: Postingan(),
             )
           ],
         ),
