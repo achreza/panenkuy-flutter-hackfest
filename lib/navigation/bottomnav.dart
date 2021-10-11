@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_panenkuy/ui/dashboard.dart';
 import 'package:flutter_panenkuy/ui/login.dart';
 import 'package:flutter_panenkuy/ui/menumaps.dart';
+import 'package:flutter_panenkuy/ui/postingan.dart';
 import 'package:flutter_panenkuy/ui/profile_page.dart';
 // import 'package:flutter_navigation/Screens/business.dart';
 
@@ -96,23 +97,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           Icon(
             Icons.home,
             size: 30,
-            color: HexColor("#2DDA93"),
+            color: HexColor("#ffffff"),
           ),
           Icon(
             Icons.add,
             size: 50,
-            color: HexColor("#48A2F5"),
+            color: HexColor("#4790D4"),
           ),
           Icon(
             Icons.person,
             size: 30,
-            color: HexColor("#2DDA93"),
+            color: HexColor("#ffffff"),
           ),
         ],
         // HexColor("#3B4254")
-        color: Colors.white,
-        buttonBackgroundColor: HexColor("#ffffff"),
-        backgroundColor: HexColor("#D2D2D2"),
+        color: HexColor("#2DDA93"),
+        buttonBackgroundColor: HexColor("#2DDA93"),
+        backgroundColor: HexColor("#ffffff"),
         animationCurve: Curves.easeInCubic,
         animationDuration: Duration(milliseconds: 600),
         onTap: _onItemTapped,
