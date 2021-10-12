@@ -54,7 +54,7 @@ class _ChatPageState extends State<ChatPage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ChatPageDetail()),
+                  MaterialPageRoute(builder: (context) => DetailChat()),
                 );
               },
               child: Container(

@@ -156,29 +156,27 @@ class _ChatPageState extends State<ChatPageDetail> {
   }
 
   void _loadMessages() async {
-    final response = await rootBundle.loadString('assets/messages.json');
-    final messages = (jsonDecode(response) as List)
-        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-        .toList();
+    // final response = await rootBundle.loadString('assets/messages.json');
+    // final messages = (jsonDecode(response) as List)
+    //     .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
+    //     .toList();
 
-    setState(() {
-      _messages = messages;
-    });
+    // setState(() {
+    //   _messages = messages;
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        bottom: false,
-        child: Chat(
-          messages: _messages,
-          onAttachmentPressed: _handleAtachmentPressed,
-          onMessageTap: _handleMessageTap,
-          onPreviewDataFetched: _handlePreviewDataFetched,
-          onSendPressed: _handleSendPressed,
-          user: _user,
-        ),
+    return SafeArea(
+      bottom: false,
+      child: Chat(
+        messages: _messages,
+        onAttachmentPressed: _handleAtachmentPressed,
+        onMessageTap: _handleMessageTap,
+        onPreviewDataFetched: _handlePreviewDataFetched,
+        onSendPressed: _handleSendPressed,
+        user: _user,
       ),
     );
   }
