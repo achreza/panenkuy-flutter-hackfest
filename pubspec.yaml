@@ -36,6 +36,11 @@ dependencies:
   http: ^0.13.3
   json_serializable: ^4.1.4
   curved_navigation_bar: ^1.0.1
+  flutter_chat_ui: ^1.4.4
+  image_picker: ^0.8.4+1
+  file_picker: ^4.1.4
+  uuid: ^3.0.5
+  open_file: ^3.2.1
   
 
 dev_dependencies:

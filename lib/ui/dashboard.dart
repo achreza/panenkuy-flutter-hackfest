@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_panenkuy/ui/chat.dart';
 import 'package:flutter_panenkuy/ui/login.dart';
 import 'package:flutter_panenkuy/ui/postingan.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -167,10 +168,18 @@ class _DashboardMenuState extends State<DashboardMenu> {
                           ),
                         ),
                       ),
-                      Icon(
-                        Icons.send,
-                        color: Colors.white,
-                        size: 30,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatPage()),
+                    );
+                        },
+                        child: Icon(
+                          Icons.send,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                       )
                     ],
                   )
