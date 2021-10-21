@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_panenkuy/ApiResponse/apiresponse.dart';
 import 'package:flutter_panenkuy/navigation/bottomnav.dart';
 import 'package:flutter_panenkuy/ui/map_screen.dart';
 import 'package:flutter_panenkuy/ui/menumaps.dart';
 import 'package:flutter_panenkuy/ui/register.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // Getting value from TextField widget.
   final passwordController = TextEditingController();
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
 
   bool _obscureText = true;
 
@@ -29,6 +34,37 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  Future<ApiResponse> authenticateUser() async {
+    ApiResponse _apiResponse = new ApiResponse();
+
+    try {
+      final response = await http.post(
+          Uri.parse("http://api-panenkuy.bintangmfhd.tech/api/register"),
+          headers: {
+            "Accept": "application/json",
+          },
+          body: {
+            'email': emailController.toString(),
+            'password': passwordController.toString(),
+          });
+
+     switch (response.statusCode) {
+      case 200:
+        _apiResponse.Data = json.decode(response.body);
+        List Data1 = json.decode(response.body)['Data'];
+        print(Data1);
+        break;
+      
+    }
+    List Data1 = json.decode(response.body)['Data'];
+    print(Data1);
+    } on SocketException {
+      print("Server error. Please retry");
+    }
+    
+    return _apiResponse;
   }
 
   @override
@@ -81,11 +117,11 @@ class _LoginPageState extends State<LoginPage> {
                   style:
                       TextStyle(color: Colors.green, fontFamily: 'Montserrat'),
                   validator: (val) =>
-                      val!.length < 6 ? 'Username too short.' : null,
-                  controller: usernameController,
+                      val!.length < 6 ? 'Email too short.' : null,
+                  controller: emailController,
                   autocorrect: true,
                   decoration: InputDecoration(
-                      hintText: 'Masukkan Username',
+                      hintText: 'Masukkan Email',
                       hintStyle: TextStyle(
                           color: Colors.green, fontFamily: 'Montserrat'),
                       focusColor: Colors.white,
@@ -168,10 +204,11 @@ class _LoginPageState extends State<LoginPage> {
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.w700)),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BottomNav()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => BottomNav()),
+                    // );
+                    authenticateUser();
                   },
                   child: Text(
                     'LOGIN',

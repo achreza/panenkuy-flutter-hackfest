@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_panenkuy/ApiResponse/apiresponse.dart';
 import 'package:flutter_panenkuy/navigation/bottomnav.dart';
 import 'package:flutter_panenkuy/ui/dashboard.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -11,6 +16,9 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  
+  
+
   bool visible = false;
   bool isChecked = false;
 
@@ -29,6 +37,36 @@ class _RegisterState extends State<Register> {
       _obscureText = !_obscureText;
     });
   }
+
+  Future<ApiResponse> authenticateUser() async {
+  ApiResponse _apiResponse = new ApiResponse();
+
+  try {
+    final response = await http.post(Uri.parse("http://api-panenkuy.bintangmfhd.tech/api/register"),headers: {
+          "Accept": "application/json",
+          
+        }, body: {
+      'fullname': usernameController.toString(),
+      'email': emailController.toString(),
+      'password': passwordController.toString(),
+      'password_confirmation': emailController.toString(),
+
+
+    });
+
+    switch (response.statusCode) {
+      case 200:
+        _apiResponse.Data = json.decode(response.body);
+        break;
+      
+    }
+  } on SocketException {
+    print("Server error. Please retry");
+  }
+  print(_apiResponse);
+  return _apiResponse;
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -237,10 +275,7 @@ class _RegisterState extends State<Register> {
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.w700)),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BottomNav()),
-                    );
+                    authenticateUser();
                   },
                   child: Text(
                     'DAFTAR',

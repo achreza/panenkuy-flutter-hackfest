@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_panenkuy/ui/chat.dart';
 import 'package:flutter_panenkuy/ui/login.dart';
 import 'package:flutter_panenkuy/ui/postingan.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class DashboardMenu extends StatefulWidget {
   const DashboardMenu({Key? key}) : super(key: key);
@@ -13,6 +17,15 @@ class DashboardMenu extends StatefulWidget {
 
 class _DashboardMenuState extends State<DashboardMenu> {
   final searchController = TextEditingController();
+  final String apiUrl = "http://api-panenkuy.bintangmfhd.tech/api/user";  
+  var hasil;
+
+  Future<List<dynamic>> _fecthDataUsers() async {
+    var result = await http.get(Uri.parse(apiUrl),headers: {HttpHeaders.acceptHeader: 'application/json'});
+    print(json.decode(result.body)['data']);
+    return json.decode(result.body)['data'];
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +203,20 @@ class _DashboardMenuState extends State<DashboardMenu> {
               margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
               width: MediaQuery.of(context).size.width,
               height: 579,
-              child: Postingan(),
+              child: FutureBuilder<List<dynamic>>(future: _fecthDataUsers(),builder: (BuildContext context,AsyncSnapshot snapshot){
+                if(snapshot.hasData){
+                  return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (BuildContext context,int index){
+                    return Container(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(snapshot.data[index]['fullname']),
+                    );
+                  });
+
+                }else{
+                  return Center(child: CircularProgressIndicator());
+                }
+              },)
             )
           ],
         ),

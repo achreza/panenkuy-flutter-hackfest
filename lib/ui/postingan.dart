@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_panenkuy/models/postmodel.dart';
 import 'package:flutter_panenkuy/ui/login.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Postingan extends StatefulWidget {
   const Postingan({Key? key}) : super(key: key);
@@ -11,23 +13,28 @@ class Postingan extends StatefulWidget {
 }
 
 class _PostinganState extends State<Postingan> {
+  final String apiUrl = "http://api-panenkuy.bintangmfhd.tech/api/post/10";  
+  var hasil;
+
+  Future<List<dynamic>> _fecthDataUsers() async {
+    var result = await http.get(Uri.parse(apiUrl));
+    return json.decode(result.body)['data'];
+    hasil = result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView(
         children: postList.map((postingan) {
-          // ignore: deprecated_member_use
+          
           return FlatButton(
               onPressed: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                //   return LoginPage();
-                // }));
+               
               },
               child: Column(
                 children: [
-                  // Divider(
-                  //   color: Colors.black,
-                  // ),
+                  
                   Container(
                     color: Colors.white,
                     width: MediaQuery.of(context).size.width,
