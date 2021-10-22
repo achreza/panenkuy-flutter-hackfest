@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_panenkuy/models/postmodel.dart';
+import 'package:flutter_panenkuy/ui/detail_postingan.dart';
 import 'package:flutter_panenkuy/ui/login.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
@@ -30,7 +31,10 @@ class _PostinganState extends State<Postingan> {
           
           return FlatButton(
               onPressed: () {
-               
+                Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailPostingan(postingan: postingan,)),
+                    );
               },
               child: Column(
                 children: [

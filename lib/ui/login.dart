@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       final response = await http.post(
-          Uri.parse("http://api-panenkuy.bintangmfhd.tech/api/register"),
+          Uri.parse("http://api-panenkuy.bintangmfhd.tech/api/login"),
           headers: {
             "Accept": "application/json",
           },
@@ -58,13 +58,17 @@ class _LoginPageState extends State<LoginPage> {
         break;
       
     }
-    List Data1 = json.decode(response.body)['Data'];
-    print(Data1);
+    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BottomNav()),
+                    );
     } on SocketException {
       print("Server error. Please retry");
     }
     
+    
     return _apiResponse;
+    
   }
 
   @override
@@ -204,11 +208,11 @@ class _LoginPageState extends State<LoginPage> {
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.w700)),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => BottomNav()),
-                    // );
-                    authenticateUser();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => BottomNav()),
+                    );
+                    
                   },
                   child: Text(
                     'LOGIN',

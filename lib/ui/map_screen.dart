@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_panenkuy/locations.dart' as locations;
+import 'package:hexcolor/hexcolor.dart';
 
 import '../direction_model.dart';
 import '../direction_repo.dart';
@@ -77,8 +78,9 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: HexColor("29D890"),
         centerTitle: false,
-        title: const Text('KATAKAN PETAA'),
+        title: const Text('Map Screen'),
         actions: [
           if (_origin != null)
             TextButton(

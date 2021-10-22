@@ -203,20 +203,21 @@ class _DashboardMenuState extends State<DashboardMenu> {
               margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
               width: MediaQuery.of(context).size.width,
               height: 579,
-              child: FutureBuilder<List<dynamic>>(future: _fecthDataUsers(),builder: (BuildContext context,AsyncSnapshot snapshot){
-                if(snapshot.hasData){
-                  return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (BuildContext context,int index){
-                    return Container(
-                      height: 300,
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(snapshot.data[index]['fullname']),
-                    );
-                  });
+              // child: FutureBuilder<List<dynamic>>(future: _fecthDataUsers(),builder: (BuildContext context,AsyncSnapshot snapshot){
+              //   if(snapshot.hasData){
+              //     return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (BuildContext context,int index){
+              //       return Container(
+              //         height: 300,
+              //         width: MediaQuery.of(context).size.width,
+              //         child: Text(snapshot.data[index]['fullname']),
+              //       );
+              //     });
 
-                }else{
-                  return Center(child: CircularProgressIndicator());
-                }
-              },)
+              //   }else{
+              //     return Center(child: CircularProgressIndicator());
+              //   }
+              // },)
+              child: Postingan(),
             )
           ],
         ),

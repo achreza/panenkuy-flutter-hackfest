@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_panenkuy/models/modeluser.dart';
 
-import '';
 import 'package:http/http.dart' as http;
 
 class AuthService {
