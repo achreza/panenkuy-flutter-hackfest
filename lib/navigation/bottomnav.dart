@@ -1,14 +1,4 @@
-/// Flutter code sample for BottomNavigationBar
 
-// This example shows a [BottomNavigationBar] as it is used within a [Scaffold]
-// widget. The [BottomNavigationBar] has four [BottomNavigationBarItem]
-// widgets, which means it defaults to [BottomNavigationBarType.shifting], and
-// the [currentIndex] is set to index 0. The selected item is amber in color.
-// With each [BottomNavigationBarItem] widget, backgroundColor property is
-// also defined, which changes the background color of [BottomNavigationBar],
-// when that item is selected. The `_onItemTapped` function changes the
-// selected item's index and displays a corresponding message in the center of
-// the [Scaffold].
 
 import 'package:flutter/material.dart';
 import 'package:flutter_panenkuy/ui/dashboard.dart';
@@ -16,16 +6,13 @@ import 'package:flutter_panenkuy/ui/login.dart';
 import 'package:flutter_panenkuy/ui/menumaps.dart';
 import 'package:flutter_panenkuy/ui/postingan.dart';
 import 'package:flutter_panenkuy/ui/profile_page.dart';
-// import 'package:flutter_navigation/Screens/business.dart';
+
 
 import 'package:hexcolor/hexcolor.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-/// This is the main application widget.
 class BottomNav extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
-
-  // User Logout Function.
 
   @override
   Widget build(BuildContext context) {
@@ -59,19 +46,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
+
+    //Iki list Page e, nek pigin nambah tinggal Manggil
+    //tapi kudu nambah icon neh ndek widget e
   static List<Widget> Screens = [
     DashboardMenu(),
     MenuPeta(),
     ProfilePage(),
   ];
 
-  // static List<_MyColor> myBgColors = [
-  //   const _MyColor(Colors.red, 'Red'),
-  //   const _MyColor(Colors.blue, 'Light Blue'),
-  //   const _MyColor(Colors.purple, 'Purple'),
-  //   const _MyColor(Colors.pink, 'Pink'),
-  //   const _MyColor(Colors.blue, 'Blue'),
-  // ];
 
   void _onItemTapped(int index) {
     setState(() {
